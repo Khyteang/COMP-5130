@@ -1,0 +1,19 @@
+Khyteang Lim
+
+Week 1 Task: Determine a project for this class and the tech stack that will be needed
+
+The project that I have chosen for this class is an application that visualize real-time natural disasters that are occurring around the world. 
+This idea came from the curiosity that I have about what is going on in this world. 
+With the news that focus mostly on local politics or issues happening in our country, we do lack the context of what else are happening around the world today. 
+So many people are struggling, and they are not getting the help that we can provide. 
+My ideal solution is not just to provide the location of the disasters but to provide links to where users can donate and help those who are affected by the disaster.
+
+Tech Stack:
+
+Backend
+1.	Nodejs for javascript runtime environment that can execute the javascript code
+2.	Express for creating routing
+3.	Redis or maybe just a JSON file for data store
+Frontend
+1.	Reactjs
+2.	HTML/CSS
