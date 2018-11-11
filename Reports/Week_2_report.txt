@@ -1,0 +1,17 @@
+Khyteang Lim
+
+Week 2 Task: Setup Backend and Frontend Frameworks
+
+This week, I set up the frontend framework ReactJS with webpack bundler. 
+This week I will also be looking for where I can retrieve these real-time data from.
+
+For the frontend setup, I will be using the webpack as a bundler that will bundle all the codes and dependency into one minified file.
+Will be using Babel as a javascript compiler.
+
+Struggles:
+When trying to set up webpack and babel to work with reactjs, I had a lot of problems with getting the correct dependency version.
+This took a bit of time since there wasn't a tutorial on installing the latest version of all these tools. 
+But managed to get it working and playing around more with the flow.
+
+
+
