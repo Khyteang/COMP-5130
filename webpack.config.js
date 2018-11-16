@@ -13,6 +13,7 @@ module.exports = {
     path: path.resolve('dist'),
     filename: 'index_bundle.js'
   },
+  target: 'web',
   module: {
     rules: [
       { test: /\.css$/,
