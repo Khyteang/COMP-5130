@@ -1,5 +1,7 @@
 import React from "react";
 import SimplifiedMap from './SimplifedMap.jsx';
+import './App.css';
+import { Container, Row, Col } from 'reactstrap';
 
 class App extends React.Component {
     constructor(props) {
@@ -19,7 +21,14 @@ class App extends React.Component {
 
     render() {
       return (
-        <SimplifiedMap />
+        <div className="wrapper">
+          <div id="mapWrapper">
+            <SimplifiedMap />
+          </div>
+          <div id="infoWrapper">
+            
+          </div>
+        </div>
       );
     }
   }

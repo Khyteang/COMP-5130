@@ -1,0 +1,6 @@
+Khyteang Lim
+
+Week 4 Tasks:
+Set up express server that can serve the data from the data that I have collected. This REST API endpoint would serve data through the GET request and will be used by the react client.
+Set up the integration between the react client and the backend server to collect the data.
+Another task for this week is plot all the data on the map and add marker features.

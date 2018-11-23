@@ -1,21 +1,29 @@
-import fs from 'fs';
+const fs = require('fs');
 
-function readTextFile(file, callback) {
-    var data = fs.readFileSync(file, 'utf-8');
-    var eventsMap = JSON.parse(data);
-    callback(eventsMap);
-}
-
-function ParseData(url) {
-    return readTextFile("./data/map_event.json", function(events){
-        var eventMap = [];
-        for (let key in events) {
-            let eventObj = events[key];
-            let event = new Event(eventObj["id"], eventObj["lat"], eventObj["lon"], eventObj["title"], eventObj["icon"]);
-            eventMap.push(event);
-        }
-        return eventMap;
+function readTextFile(file) {
+    return new Promise((resolve, reject) => {
+        var data = fs.readFileSync(file, 'utf-8');
+        var eventsMap = JSON.parse(data);
+        resolve(eventsMap);
     });
 }
 
-export default ParseData;
+function dataParser() {
+    let path = __dirname + "/data/map_event.json";
+    return readTextFile(path)
+    .then((events) => {
+        var eventMap = [];
+        for (let key in events) {
+            let eventObj = events[key];
+            //let event = new Event(eventObj["id"], eventObj["lat"], eventObj["lon"], eventObj["title"], eventObj["icon"]);
+            eventMap.push(eventObj);
+        }
+        return eventMap;
+    })
+    .catch((err) => {
+        console.log(`Error has occurred trying to parse data from ${path}`);
+        reject(err);
+    })
+}
+
+module.exports = {dataParser};
