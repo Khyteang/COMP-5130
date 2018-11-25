@@ -36,7 +36,7 @@ export class SimplifiedMap extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3002/AngelViewApi/v1/naturalDisaster")
+    fetch("/AngelViewApi/v1/naturalDisaster")
     .then((res) => res.json())
     .then((result) => {
       this.setState({

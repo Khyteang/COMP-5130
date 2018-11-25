@@ -10,6 +10,7 @@ function readTextFile(file) {
 
 function dataParser() {
     let path = __dirname + "/data/map_event.json";
+    console.log(`trying to parse ${path}`);
     return readTextFile(path)
     .then((events) => {
         var eventMap = [];

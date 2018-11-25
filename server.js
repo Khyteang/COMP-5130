@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-const port = 3002;
+const path = require('path');
+const port = process.env.PORT || 3002;
 
 const { dataParser } = require('./server/dataParser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(__dirname));
 
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
@@ -26,6 +28,14 @@ app.use(function (req, res, next) {
     next();
 })
 
+app.get('/ping', function (req, res) {
+    return res.send('pong');
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'index.html'));
+});
+
 app.get('/AngelViewApi/v1/naturalDisaster', (req, res) => {
     console.log("GET endpoint");
     dataParser()
@@ -40,7 +50,7 @@ app.get('/AngelViewApi/v1/naturalDisaster', (req, res) => {
 
 app.listen(port, (err) => {
     if (err) {
-        return console.log('error setting up server', err)
+        throw err;
     }
     console.log(`successfuly set up server at port ${port}`);
 })

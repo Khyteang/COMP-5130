@@ -4,17 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server && node server.js"
+    "postinstall": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "repository": "git@github.com:Khyteang/COMP-5130.git",
   "dependencies": {
-    "html-webpack-plugin": "^3.2.0",
-    "path": "^0.12.7",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10",
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.5",
     "@babel/polyfill": "^7.0.0",
@@ -26,14 +23,19 @@
     "css-loader": "^1.0.1",
     "express": "^4.16.4",
     "google-maps-react": "^2.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "path": "^0.12.7",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "reactstrap": "^6.5.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
   },
   "devDependencies": {
-
-  },
-  "proxy": "http://localhost:3002/"
+    
+  }
 }

@@ -10,8 +10,12 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: path.resolve('dist'),
+    path: __dirname,
     filename: 'index_bundle.js'
+  },
+  devServer: {
+    inline: true,
+    port: process.env.PORT || 8010
   },
   target: 'web',
   module: {
