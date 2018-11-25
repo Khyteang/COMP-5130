@@ -62,7 +62,6 @@ export class SimplifiedMap extends Component {
     }
   }
   
-
   render() {
       let {isLoaded, naturalDisasters} = this.state;
 
