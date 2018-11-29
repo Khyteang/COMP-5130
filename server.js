@@ -5,6 +5,7 @@ const path = require('path');
 const port = process.env.PORT || 3002;
 
 const { dataParser } = require('./server/dataParser');
+const { retrieveTweets } = require('./server/twitterLayer');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -41,6 +42,21 @@ app.get('/AngelViewApi/v1/naturalDisaster', (req, res) => {
     dataParser()
     .then((data) => {
         res.json(data);
+    })
+    .catch((err) => {
+        res.status(500);
+        res.json(err);
+    });
+})
+
+app.get('/AngelViewApi/v1/tweets', (req, res) => {
+    let keywords = decodeURI(req.query.keywords);
+    console.log(`GET tweets for ${req.query.keywords}`);
+    console.log(`Decoded String ${keywords}`);
+    
+    retrieveTweets(keywords)
+    .then((tweets) => {
+        res.json(tweets);
     })
     .catch((err) => {
         res.status(500);

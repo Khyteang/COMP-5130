@@ -1,0 +1,23 @@
+Khyteang Lim
+
+Week 6 Tasks:
+
+Once we have the map and the data, we were able to plot the events on the map. 
+When you click on the marker on the map, a dialog will show up with more information such as location and country of where the event is occurring. 
+However, the task for this week is to find real-time data regarding the events through social media. 
+Having a real-time data can help update the consumers of what is going on based on people who are on-site at the event.
+
+This week task is to find way to integrate Twitter API with our application. 
+In order to utilize the Twitter API, I had to sign up for a developer account which took a bit of time given that they are getting strict with who they are giving access to. 
+At the meantime, I did some researches on how to integrate twitter search API with node application and found this resource https://www.npmjs.com/package/twitter which is a asynchronous client library for integrating Twitter API with node application.
+
+Things I did this week:
+-	Create a twitter developer account
+-	Research how to integrate Twitter API with node application
+-	Understand the Twitter library documentation
+-	Set up configuration to hold twitter API secrets/keys
+-	Implement a GET endpoint in Express app that can be used to retrieve tweets based on specific keywords (which can be used by the React App)
+-	Implement the Twitter Layer using the Twitter library to call the Twitter REST API endpoints with the given keywords.
+
+There wasn’t anything that I had a hard time with other than trying to get a twitter developer account which took a bit of time. 
+But the documentation for using the npm package Twitter was very good so I didn’t have a hard time trying to implement that.

@@ -8,3 +8,9 @@
 #mapWrapper {
     position: relative;
 }
+
+#infoWrapper {
+    height: 100vh;
+    overflow: auto;
+    position: relative;
+}

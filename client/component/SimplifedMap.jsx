@@ -28,6 +28,8 @@ export class SimplifiedMap extends Component {
   }
   
   onMarkerClick(props, marker, e) {
+
+    this.props.infoWrapperCallback(props, true);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -36,7 +38,7 @@ export class SimplifiedMap extends Component {
   }
 
   componentDidMount() {
-    fetch("/AngelViewApi/v1/naturalDisaster")
+    fetch("http://localhost:3002/AngelViewApi/v1/naturalDisaster")
     .then((res) => res.json())
     .then((result) => {
       this.setState({
@@ -64,13 +66,17 @@ export class SimplifiedMap extends Component {
   
   render() {
       let {isLoaded, naturalDisasters} = this.state;
-
       if (isLoaded) {
         let markers = naturalDisasters.reduce((memo, disaster) => {
           let info = (disaster.hbox).split('<br>');
           let metaData = info.reduce((infoMemo, info) => {
-            let infos = info.split(":");
-            infoMemo[infos[0]] = (info.replace(`${infos[0]}:`, '')).trim();
+            if (info.includes('href')) {
+              let replacedLink = info.replace('<a href=\'', '');
+              infoMemo["link"] = `http://hisz.rsoe.hu/alertmap/${(replacedLink.replace('\'>More details</a>', '')).trim()}`;
+            } else {
+              let infos = info.split(":");
+              infoMemo[infos[0]] = (info.replace(`${infos[0]}:`, '')).trim();  
+            }
             return infoMemo;
           }, {});
           memo.push(<Marker
