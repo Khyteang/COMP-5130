@@ -1,8 +1,8 @@
 import React from "react";
 import SimplifiedMap from './SimplifedMap.jsx';
+import InfoWrapper from './InfoWrapper.jsx';
 
 import './App.css';
-import { Container, Row, Col } from 'reactstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class App extends React.Component {
           <SimplifiedMap infoWrapperCallback={(disasterObj, updatedFetchTweets) => this.setState({disasterObj, updateFetchTweets: updatedFetchTweets})}/>
         </div>
         <div id="infoWrapper">
-          Hello
+        <InfoWrapper disasterObj={this.state.disasterObj} fetchTweets={this.state.updateFetchTweets} updateFetchTweets={(updatedFetchTweets) => this.setState({updateFetchTweets: updatedFetchTweets})}/>
         </div>
       </div>
     );

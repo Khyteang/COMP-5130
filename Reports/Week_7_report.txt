@@ -1,0 +1,24 @@
+Khyteang Lim
+
+Week 7 Tasks:
+
+Last week, we integrated the twitter search capability which will return you a list of tweets based on keywords that you are searching by. 
+What I want to add to this application is a real-time data flow that gives the consumers the ability to stay up-to-date with the event by social media. 
+
+The next thing I have to do for this week is to create a React component to hold those tweets and then to display the tweets based on which event the consumer is clicking on. 
+
+Things I did:
+-	Create a React Component for InfoWrapper which will hold all the tweets and maybe more things
+-	Have InfoWrapper fetch from the REST endpoint that was created last week.
+-	Either create React Component to present Twitter Component or find library that does this
+-	Display tweets in production
+
+Creating the InfoWrapper React Component was the biggest part of this week challenge just because this component has to call the fetch function to call our Express App REST endpoint. 
+The endpoint would then call the twitter layer which then fetch the tweets from the Twitter REST endpoint. 
+The issue is that there is a rate limit on how often we can call the Twitter REST endpoints. 
+However, the fetch has to occur in the InfoWrapper DidUpdateComponent() lifecycle which resulted in a lot of call to our REST API endpoint. 
+What I did to solve this issue is to create a new property called “updateFetchTweet” in the state of App.js which determines if we need to make a fetch from our REST endpoint. 
+This property gets updated through the callback function in SimplifiedMap component (when a marker is selected) and InfoWrapper component (after we get back the list of tweet string ids).
+
+I also found that there is a Twitter React Component library called “react-twitter-widgets” https://www.npmjs.com/package/react-twitter-widgets. 
+This library allows for easy integration of twitter components such as Tweets into your React application with just the string id of the tweet.
