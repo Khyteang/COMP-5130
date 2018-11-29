@@ -17,7 +17,7 @@ export default class InfoWrapper extends Component {
     componentDidUpdate() {
         if (this.props.disasterObj && this.props.fetchTweets) {
             const keywordsToSearch = `${this.props.disasterObj.title} ${this.props.disasterObj.metaData.Country}`
-            fetch(`http://localhost:3002/AngelViewApi/v1/tweets?keywords=${keywordsToSearch}`)
+            fetch(`AngelViewApi/v1/tweets?keywords=${keywordsToSearch}`)
             .then((res) => res.json())
             .then((result) => {
                 let tweetComps = result.reduce((memo, id) => {
