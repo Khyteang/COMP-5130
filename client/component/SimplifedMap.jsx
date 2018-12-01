@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//import Circle, { Map, GoogleApiWrapper, InfoWindow, Marker, Polygon } from 'google-maps-react';
 import { withGoogleMap, GoogleMap, Circle, Marker, InfoWindow } from 'react-google-maps';
-import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 
 const mapStyles = {
   width: '100%',
@@ -43,7 +41,7 @@ export default class SimplifiedMap extends Component {
   }
   
   onMarkerClick(selectedMarkerInfo) {
-    this.props.infoWrapperCallback(selectedMarkerInfo, true);
+    this.props.infoWrapperCallback(selectedMarkerInfo, true, false);
     this.setState({
       activeMarker: selectedMarkerInfo,
       showingInfoWindow: true,
@@ -57,6 +55,14 @@ export default class SimplifiedMap extends Component {
       infoBoxOpen: true,
       showCircle: true
     });
+  }
+
+  onMapClick() {
+    this.props.clickOnMap(true);
+    this.setState({
+      showCircle: false,
+      infoBoxOpen: false
+    })
   }
 
   componentDidMount() {
@@ -109,6 +115,7 @@ export default class SimplifiedMap extends Component {
 
       if (isLoaded) {
         let markers = naturalDisasters.reduce((memo, disaster) => {
+          let isEarthquake = (disaster.title).includes('arthquake') ? true : false;
           let info = (disaster.hbox).split('<br>');
           let metaData = info.reduce((infoMemo, info) => {
             if (info.includes('href')) {
@@ -120,18 +127,24 @@ export default class SimplifiedMap extends Component {
             }
             return infoMemo;
           }, {});
-
+          if (isEarthquake) {
+            console.log(metaData);
+          }
           let markerInfo = {
             title: disaster.title,
             name: disaster.title,
             position: {lat: Number(disaster.lat), lng: Number(disaster.lon)},
-            metaData
+            description: disaster.Description,
+            metaData,
+            isEarthquake
           };
+
+          let icon = isEarthquake ? "earthquake.png" : disaster.icon;
 
           memo.push(<Marker
             onClick={this.onMarkerClick.bind(this, markerInfo)}
             position={new google.maps.LatLng(Number(disaster.lat), Number(disaster.lon))}
-            icon={`http://localhost:3002/public/logos/epidemic.png`}
+            icon={`http://localhost:3002/public/logos/${icon}`}
             />);
           return memo;
         }, []);
@@ -154,11 +167,7 @@ export default class SimplifiedMap extends Component {
             >
               <div style={{ backgroundColor: `white`, opacity: 0.75, padding: `12px` }}>
                 <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-                  <h4>Event: {this.state.activeMarker.title}</h4>
-                  <h4>Date: {this.state.activeMarker.metaData.Date}</h4>
-                  <h4>Location: {this.state.activeMarker.metaData.Location}</h4>
-                  <h4>Country: {this.state.activeMarker.metaData.Country}</h4>
-                  <h4>Continent: {this.state.activeMarker.metaData.Continent}</h4>
+                  {`${this.state.activeMarker.title} at ${this.state.activeMarker.metaData.Location} on ${this.state.activeMarker.metaData.Date}`}
                 </div>
               </div>
             </InfoWindow>}
@@ -185,9 +194,3 @@ export default class SimplifiedMap extends Component {
       );
     }
 }
-
-/*
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyD24fO96Lsk2K_ZNdIgxCr_gwKpFg6xlpo'
-})(SimplifiedMap);
-*/

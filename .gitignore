@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 yarn-error.log
 dist/
+index_bundle.js
+index.html

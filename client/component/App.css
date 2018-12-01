@@ -14,3 +14,35 @@
     overflow: auto;
     position: relative;
 }
+
+.initialTextDiv {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.eventInfoContentWrapper {
+    font-size: 12px;
+    color: #08233B;
+    padding: 20px;
+}
+
+.center {
+    margin-top: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.chartWrapper {
+    margin-top: 5vh;
+}
+
+.infoPairWrapper h6 {
+    margin-left: 2vh;
+}

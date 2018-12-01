@@ -7,7 +7,7 @@ var keyword_search_params = { q: '"business cards", "buying"', count: 100, tweet
 
 var retrieveTweets = function(keywords) {
     return new Promise((resolve, reject) => {
-        keyword_search_params.q = `${keywords} -filter:retweets`;
+        keyword_search_params.q = `${keywords}`;
         console.log(`Keywords ${keyword_search_params}`);
         twitter_client.get('search/tweets', keyword_search_params, function(error, result, response) {
             if (error) {

@@ -9,7 +9,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       disasterObj: null,
-      updateFetchTweets: false
+      updateFetchTweets: false,
+      removeTweet: true
     };
   }
 
@@ -17,10 +18,10 @@ class App extends React.Component {
     return (
       <div className="wrapper">
         <div id="mapWrapper">
-          <SimplifiedMap infoWrapperCallback={(disasterObj, updatedFetchTweets) => this.setState({disasterObj, updateFetchTweets: updatedFetchTweets})}/>
+          <SimplifiedMap infoWrapperCallback={(disasterObj, updatedFetchTweets, removeTweet) => this.setState({disasterObj, updateFetchTweets: updatedFetchTweets, removeTweet})} clickOnMap={(removeTweet) => this.setState({removeTweet})}/>
         </div>
         <div id="infoWrapper">
-        <InfoWrapper disasterObj={this.state.disasterObj} fetchTweets={this.state.updateFetchTweets} updateFetchTweets={(updatedFetchTweets) => this.setState({updateFetchTweets: updatedFetchTweets})}/>
+        <InfoWrapper removeTweet={this.state.removeTweet} disasterObj={this.state.disasterObj} fetchTweets={this.state.updateFetchTweets} updateFetchTweets={(updatedFetchTweets) => this.setState({updateFetchTweets: updatedFetchTweets})}/>
         </div>
       </div>
     );

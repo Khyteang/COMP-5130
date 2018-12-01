@@ -1,0 +1,23 @@
+Khyteang Lim
+
+Week 9 Tasks:
+With most of functionalities for this application production ready, I started to integrate a few more feature that helps the users visualize the events that are happening. 
+I also modified the InfoWrapper component to include a tab component that has three views: Event Information, Real-Time Tweets, and Donation. 
+The purpose of the Event Information is to give a more descriptive of the event and link to learn more about the event. 
+The real-time tweet tab contains tweets relating to the event. 
+The donation tab has a radar graph which purpose is to display how much others have donated to this event and how much left is needed. 
+
+Things I did:
+-	Update InfoWrapper to include tabs for “Event Information”, “Real-Time Tweets”, and “Donation”.
+-	Use Reactstrap to implement tabs
+-	Add more icons to represent other disaster events
+-	Research for React Chart Component Library. Found react-chartjs-2 https://www.npmjs.com/package/react-chartjs-2
+-	Implement Radar chart using react-chartjs-2.
+
+There were no impediments for this week given that it was very straightforward with what the tasks for this week were. 
+Reactstrap is very simple to implement since it has great documentation for creating tabs (https://reactstrap.github.io/components/tabs/). 
+React-Chartjs-2 is also a very simple library to understand and use to create charts.
+Great examples of using React-Chartjs-2 at https://github.com/jerairrest/react-chartjs-2/tree/master/example.
+The only issue with this application right now is that there aren’t a lot of data regarding each event so the Radar chart contains fake data. 
+This isn’t something that will get fixed in this application just because data is sacred.
+I also generated a more up-to-date data file in map_event_latest.json which contains a bunch of earthquake events.

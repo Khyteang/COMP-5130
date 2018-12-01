@@ -9,14 +9,13 @@ function readTextFile(file) {
 }
 
 function dataParser() {
-    let path = __dirname + "/data/map_event.json";
+    let path = __dirname + "/data/map_event_latest.json";
     console.log(`trying to parse ${path}`);
     return readTextFile(path)
     .then((events) => {
         var eventMap = [];
         for (let key in events) {
             let eventObj = events[key];
-            //let event = new Event(eventObj["id"], eventObj["lat"], eventObj["lon"], eventObj["title"], eventObj["icon"]);
             eventMap.push(eventObj);
         }
         return eventMap;
