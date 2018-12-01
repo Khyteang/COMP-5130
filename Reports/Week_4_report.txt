@@ -1,6 +1,21 @@
 Khyteang Lim
 
 Week 4 Tasks:
-Set up express server that can serve the data from the data that I have collected. This REST API endpoint would serve data through the GET request and will be used by the react client.
+In this week task, I have to start working on the backend part of this application which will be used to serve data to the react frontend.
+This REST API endpoint would serve data through the GET request and will be used by the react client.
 Set up the integration between the react client and the backend server to collect the data.
 Another task for this week is plot all the data on the map and add marker features.
+
+Things I did:
+-   Set up express server REST API endpoint
+-   Create data parser layer which read and hydrate the data json file with necessary information
+-   Create GET route to return data
+-   Integrate SimplifiedMap react component to fetch from REST API endpoint
+-   Plot data onto the map 
+
+There was no impediments in this week. There were just a lot of researches.
+
+Resources:
+-   Setting up Express REST API (https://expressjs.com/)
+-   Learning about React Component Lifecycle (https://hackernoon.com/reactjs-component-lifecycle-methods-a-deep-dive-38275d9d13c0)
+-   How to call Express application in React Component (https://medium.com/front-end-hacking/calling-express-api-in-react-using-react-script-e19084a76a8a)

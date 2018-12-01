@@ -4,9 +4,17 @@ Week 5 Tasks:
 Since I don't know how to use weblab to deploy my app, I have to choose a different cloud platform to host my application so that the grader and everyone can have access to it. 
 The tasks include determining a platform as a service that can achieve this goal, configuring the application to be able to deploy on that platform, and deploying the application.
 
+Things to do:
+-   Research for cloud hosting provider to host application
+-   Configure application
+-   Host application
+
 I chose Heroku as the cloud platform to host my application given that they have a free tier with 5 servers and it is very easy to deploy my Nodejs application on Heroku using their Heroku CLI which has a git integration. 
 I also have to build a production deployment pipeline that Heroku can understand and execute in order to successfully deploy the application. 
 The production deployment pipeline is similar to the development pipeline except that I am no longer using Webpack-Dev-Server to serve my index.html and index_bundle.js anymore. 
 Instead, I have to update my express app to be able to serve these static files.
 
 Here is the Heroku link to access the application: https://comp-5130.herokuapp.com
+
+Resource:
+-   How to deploy nodejs application to Heroku (https://devcenter.heroku.com/articles/deploying-nodejs)

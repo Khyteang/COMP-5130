@@ -6,6 +6,15 @@ http://hisz.rsoe.hu which is an Emergency and Disasters Information Service by t
 Currently, I am not making any request to their endpoint to grab the real-time data, I just have a local copy of the disasters that are happening within a set period.
 Will be using this data (currently in the Data folder) to plot onto the map.
 
+Things I did:
+-   Start collecting data from http://hisz.rsoe.hu
+-   Determine how to integrate Google Map API
+-   Search for open-source library that implements google-map react component
+-   Start implementing the open-source library into project and get a google map displays in application
+
 Started to look into how I can integrate Google Map API into the application.
-Also I found that I can use this npm package called google-maps-react which is a declarative Google Map React component that I can easily integrate into my web application.
+I found that I can use this npm package called "google-maps-react" (https://github.com/fullstackreact/google-maps-react) which is a declarative Google Map React component that I can easily integrate into my web application.
+There is also a tutorial on how to implement some of the components in this library https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/.
 In this week, I included the json data for the natural disasters that are currently occurring and I integrated Google Map and plotted a few of the markers.
+
+No impediments

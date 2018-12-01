@@ -15,5 +15,5 @@ Backend
 2.	Express for creating routing
 3.	Redis or maybe just a JSON file for data store
 Frontend
-1.	Reactjs
+1.	Reactjs (Reasons for why I am using Reactjs https://medium.freecodecamp.org/yes-react-is-taking-over-front-end-development-the-question-is-why-40837af8ab76)
 2.	HTML/CSS
