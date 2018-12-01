@@ -10,6 +10,7 @@ const { retrieveTweets } = require('./server/twitterLayer');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname));
+app.use(express.static('public'))
 
 app.use(function (req, res, next) {
     // Website you wish to allow to connect

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Tweet} from 'react-twitter-widgets';
 
+const host = "http://localhost:3001/";
+
 export default class InfoWrapper extends Component {
     constructor(props) {
         console.log("InfoWrapper Constructor");
@@ -17,7 +19,7 @@ export default class InfoWrapper extends Component {
     componentDidUpdate() {
         if (this.props.disasterObj && this.props.fetchTweets) {
             const keywordsToSearch = `${this.props.disasterObj.title} ${this.props.disasterObj.metaData.Country}`
-            fetch(`AngelViewApi/v1/tweets?keywords=${keywordsToSearch}`)
+            fetch(`${host}AngelViewApi/v1/tweets?keywords=${keywordsToSearch}`)
             .then((res) => res.json())
             .then((result) => {
                 let tweetComps = result.reduce((memo, id) => {

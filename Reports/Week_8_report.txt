@@ -1,0 +1,22 @@
+Khyteang Lim
+
+Week 8 Tasks:
+
+The feature that I want to add to the application this week is to include some visualizations for each disaster event. 
+An example would be a mapping of all the affected areas that this event has caused. This visualization can be represented as shapes on the map.
+
+Things I did:
+-	Find a new open-source library for Google Map that has shapes feature.
+-	Replace “google-maps-react” and implement “react-google-maps” Map, Markers, and InfoWindows components.
+-	Update SimplifiedMap’s state to include radius of affected area. Update the onClick() handler for each marker to include a circle around the marker to represent affected area.
+
+Impediment:
+I have been using the nuget package “google-maps-react” to build the google map react component and there are definitely some great features such as adding the Markers and Infowindow. 
+However, this open-source library lacked a working feature for building shapes onto the map. 
+
+Solution:
+This resulted in finding and replacing the google-maps-react library with another google map react open-source library called “react-google-maps” by tomchentw. 
+Here is the style guide for “react-google-maps” https://tomchentw.github.io/react-google-maps/#introduction. 
+This involved having to redo my SimplifiedMap.jsx to use and implement react-google-maps” components instead of “google-maps-react”.
+The open-source library has great documentation and I also used the Google Map API documentation for references https://developers.google.com/maps/documentation/javascript/reference/.
+
