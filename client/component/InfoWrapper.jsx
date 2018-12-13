@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Tweet} from 'react-twitter-widgets';
-import {TabContent, TabPane, Nav, NavItem, NavLink, Button} from 'reactstrap';
+import {TabContent, TabPane, Nav, NavItem, NavLink, Button, ListGroup, ListGroupItem} from 'reactstrap';
 import classnames from 'classnames';
 import {Radar} from 'react-chartjs-2';
 
@@ -22,6 +22,31 @@ const data = {
         data: [80, 70, 90, 81, 75, 65]
       }
     ]
+};
+
+const icons = {
+    "Airplane Accident": "airplan_accident.png",
+    "Bio-Hazard": "biohazard2.png",
+    "Bird Flu": "birdflu1.png",
+    "Chemical Accident": "chemical_accident2.png",
+    "CID": "cid.png",
+    "Climate Changes": "climate_changes.png",
+    "Drought": "drught.png",
+    "Earthquake": "Earthquake.png",
+    "Epidemic": "epidemic.png",
+    "Flood": "flood.png",
+    "Forest": "Forest.png",
+    "Heat": "Heat.png",
+    "Nuclear Accident": "nuclear_accident.png",
+    "Severe Weather": "severe_weather.png",
+    "Tornado": "Tornado_1.png",
+    "Torrental Rain": "torrental_rain.png",
+    "Tsunami": "Tsunami.png",
+    "Vehicle Accident": "vehicle_accident.png",
+    "Volcano": "Volcano.png",
+    "Volcano Eruption": "vulano_eruption.png",
+    "Volcano Threat": "vulano_threat.png",
+    "Wildfire": "wildfire.png"
 };
 
 export default class InfoWrapper extends Component {
@@ -50,7 +75,7 @@ export default class InfoWrapper extends Component {
     componentDidUpdate() {
         if (this.props.disasterObj && this.props.fetchTweets) {
             const keywordsToSearch = `${this.props.disasterObj.title} ${this.props.disasterObj.metaData.Country}`
-            fetch(`${host}AngelViewApi/v1/tweets?keywords=${keywordsToSearch}`)
+            fetch(`https://comp-5130.herokuapp.com/AngelViewApi/v1/tweets?keywords=${keywordsToSearch}`)
             .then((res) => res.json())
             .then((result) => {
                 let tweetComps = result.reduce((memo, id) => {
@@ -70,7 +95,19 @@ export default class InfoWrapper extends Component {
     }
 
     render() {
+
+        let iconGroupItems = [];
+        for (var key in icons) {
+            let urlSrc = `https://comp-5130.herokuapp.com/public/logos/${icons[key]}`;
+            iconGroupItems.push(<ListGroupItem><img src={urlSrc}></img>  {key}</ListGroupItem>);
+        }
         
+        let legendContent = <div className="initialTextDiv">
+                                <ListGroup style={{width:"100vh"}}>
+                                    {iconGroupItems.map((item) => {return item;})}                
+                                </ListGroup>
+                            </div>
+
         let eventInfoContent = <div className="initialTextDiv">
                                     Shown on the map are natural disaster events that are currently occuring around the world.<br /><br />
                                     Click on a marker to learn more about the event and see live tweets regarding the event.
@@ -174,7 +211,7 @@ export default class InfoWrapper extends Component {
                         className={classnames({ active: this.state.activeTab === '1' })}
                         onClick={() => { this.toggle('1'); }}
                         >
-                        Event Information
+                        Event Info
                         </NavLink>
                     </NavItem>
                     <NavItem>
@@ -182,13 +219,21 @@ export default class InfoWrapper extends Component {
                         className={classnames({ active: this.state.activeTab === '2' })}
                         onClick={() => { this.toggle('2'); }}
                         >
-                        Real-Time Tweets
+                        Legend
                         </NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink
                         className={classnames({ active: this.state.activeTab === '3' })}
                         onClick={() => { this.toggle('3'); }}
+                        >
+                        Real-Time Tweets
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink
+                        className={classnames({ active: this.state.activeTab === '4' })}
+                        onClick={() => { this.toggle('4'); }}
                         >
                         Donation
                         </NavLink>
@@ -198,10 +243,13 @@ export default class InfoWrapper extends Component {
                     <TabPane tabId="1">
                         {eventInfoContent}
                     </TabPane>
-                    <TabPane tabId="2" style={{padding: "10px 20px"}}>
-                        {tweetContent}
+                    <TabPane tabId="2">
+                        {legendContent}
                     </TabPane>
                     <TabPane tabId="3" style={{padding: "10px 20px"}}>
+                        {tweetContent}
+                    </TabPane>
+                    <TabPane tabId="4" style={{padding: "10px 20px"}}>
                         {donationContent}
                         <div className="center">
                             <Button color="primary">Make a donation</Button>{' '}

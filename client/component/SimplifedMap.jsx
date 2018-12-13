@@ -66,7 +66,7 @@ export default class SimplifiedMap extends Component {
   }
 
   componentDidMount() {
-    fetch(`${host}AngelViewApi/v1/naturalDisaster`)
+    fetch(`https://comp-5130.herokuapp.com/AngelViewApi/v1/naturalDisaster`)
     .then((res) => res.json())
     .then((result) => {
       this.setState({
@@ -139,12 +139,12 @@ export default class SimplifiedMap extends Component {
             isEarthquake
           };
 
-          let icon = isEarthquake ? "earthquake.png" : disaster.icon;
+          let icon = isEarthquake ? "Earthquake.png" : disaster.icon;
 
           memo.push(<Marker
             onClick={this.onMarkerClick.bind(this, markerInfo)}
             position={new google.maps.LatLng(Number(disaster.lat), Number(disaster.lon))}
-            icon={`http://localhost:3002/public/logos/${icon}`}
+            icon={`https://comp-5130.herokuapp.com/public/logos/${icon}`}
             />);
           return memo;
         }, []);

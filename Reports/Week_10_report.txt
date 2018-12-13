@@ -1,0 +1,14 @@
+Khyteang Lim
+
+Week 10 Tasks:
+In term of this application, all the expected features have been implemented and this week tasks were mostly UI cleanup or adding additional features to the UI.
+There were no impediments that I had this week since a lot of the heavy lifting were done the few weeks before with the backend work.
+
+Things I did:
+-   Created a new tab in the InfoWrapper called Legend
+-   Added legend so that users can know what the events are for
+-   Migrated the application in weblab per requested by Professor
+-   Create Readme with instruction to how to run this project locally and how to use new data from http://hisz.rsoe.hu
+
+I hope those who have followed this project throughout the semester have enjoyed the adventure and hopefully they also like the app as much as I do.
+Please feel free to reach out to me if you have ideas or features that you will like to see in this application.
